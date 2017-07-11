@@ -72,7 +72,6 @@ define(["js/properties", "js/sound", "js/squareImages"], function(properties, so
     };
 
     Board.prototype.clicked = function(event) {
-      if (level !== null) {
         if (level.filledSquares() < level.squaresToFill) {
             if (event.target.className == "squareImage") {
                 if(level.pinSelected) {
@@ -82,7 +81,6 @@ define(["js/properties", "js/sound", "js/squareImages"], function(properties, so
                 }
             }
         }
-      }
     };
 
     Board.prototype.pinSquare = function(squareId) {

@@ -1,4 +1,4 @@
-define(['js/properties'], function(properties) {
+define(["js/properties"], function(properties) {
 
 	return {
 
@@ -10,16 +10,16 @@ define(['js/properties'], function(properties) {
 				if(imageValue == properties.TAC) { return properties.FIXED_TAC; }
 			}
 			let equivalent =
-					(imageValue1 == imageValue2) || 
-					( 
-						(imageValue1 == imageEquivalent(imageValue2))  ||
-						(imageValue2 == imageEquivalent(imageValue1))
+					(imageValue1 === imageValue2) ||
+					(
+						(imageValue1 === imageEquivalent(imageValue2))  ||
+						(imageValue2 === imageEquivalent(imageValue1))
 					);
 			return equivalent;
 		},
 
 		generateImagePath: function generateImagePath(imageIndex) {
-			return properties.SQUARE_IMAGES_FOLDER+level.images[imageIndex]+properties.SQUARE_IMAGES_EXTENSION; 
+			return properties.SQUARE_IMAGES_FOLDER+level.images[imageIndex]+properties.SQUARE_IMAGES_EXTENSION;
 		},
 
 		getPosition: function getPosition(imageId){

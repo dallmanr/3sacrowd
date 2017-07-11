@@ -1,4 +1,4 @@
-define(['js/properties', 'js/sound'], function(properties, sound) {
+define(["js/properties", "js/sound"], function(properties, sound) {
 
     let loadLevel;
 

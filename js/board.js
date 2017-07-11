@@ -1,4 +1,4 @@
-define(['js/properties', 'js/sound', 'js/squareImages'], function(properties, sound, squareImages) {
+define(["js/properties", "js/sound", "js/squareImages"], function(properties, sound, squareImages) {
 
     function Board() {
         this.squares = [];
@@ -22,7 +22,7 @@ define(['js/properties', 'js/sound', 'js/squareImages'], function(properties, so
         var count = 0;
         this.squares.forEach(function(row) {
             row.forEach(function(square) {
-                if((square.changeable) && (square.currentImage != properties.EMPTY)) { ++count; }
+                if((square.changeable) && (square.currentImage !== properties.EMPTY)) { ++count; }
             });
         });
         return count;
@@ -46,9 +46,9 @@ define(['js/properties', 'js/sound', 'js/squareImages'], function(properties, so
                 var squareImageElement = document.createElement("img");
                 squareImageElement.className = "squareImage";
                 squareImageElement.id = square.generateImageId();
-                squareImageElement.src = squareImages.generateImagePath(square.currentImage);   
-                squareImageElement.style.border = "solid transparent"; 
-                return squareImageElement;        
+                squareImageElement.src = squareImages.generateImagePath(square.currentImage);
+                squareImageElement.style.border = "solid transparent";
+                return squareImageElement;
             }
 
             var squareElement = document.createElement("div");
@@ -70,8 +70,9 @@ define(['js/properties', 'js/sound', 'js/squareImages'], function(properties, so
         });
         return boardElement;
     };
-        
+
     Board.prototype.clicked = function(event) {
+      if (level !== null) {
         if (level.filledSquares() < level.squaresToFill) {
             if (event.target.className == "squareImage") {
                 if(level.pinSelected) {
@@ -81,6 +82,7 @@ define(['js/properties', 'js/sound', 'js/squareImages'], function(properties, so
                 }
             }
         }
+      }
     };
 
     Board.prototype.pinSquare = function(squareId) {
@@ -152,9 +154,9 @@ define(['js/properties', 'js/sound', 'js/squareImages'], function(properties, so
                     (firstAdjacentDirection1ContainsValue && secondAdjacentDirection1ContainsValue) ||
                     (firstAdjacentDirection2ContainsValue && secondAdjacentDirection2ContainsValue) ||
                     (firstAdjacentDirection1ContainsValue && firstAdjacentDirection2ContainsValue)
-                    ); 
-        }    
-    };    
+                    );
+        }
+    };
 
     Board.prototype.turnImage = function(squareId) {
         var squarePosition = squareImages.getPosition(squareId);
@@ -187,5 +189,3 @@ define(['js/properties', 'js/sound', 'js/squareImages'], function(properties, so
         }
     }
 });
-
-  
